@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>润东医药研发（上海）有限公司</title>
+		<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+		<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+		<link rel="stylesheet" href="css/share.min.css">
+		<!-- js -->
+		<script src="js/config.js"></script>
+		<script src="js/jquery-1.11.1.min.js"></script>
+		<script src="js/jquery.share.min.js"></script>
+		<!-- //js -->
+		<!-- for-mobile-apps -->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="keywords" content="Dental Care Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+		<script type="application/x-javascript">
+			addEventListener("load", function() {
+				setTimeout(hideURLbar, 0);
+			}, false);
+
+			function hideURLbar() {
+				//window.scrollTo(0, 1);
+			}
+		</script>
+		<!-- //for-mobile-apps -->
+		<!-- start-smoth-scrolling -->
+		<script type="text/javascript" src="js/move-top.js"></script>
+		<script type="text/javascript" src="js/easing.js"></script>
+		<script type="text/javascript">
+			function getQueryString(name) {
+				var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+				var r = window.location.search.substr(1).match(reg);
+				if(r != null) return unescape(r[2]);
+				return null;
+			}
+
+			function getNewsDetail() {
+				var newsid = getQueryString('id');
+				$.ajax({
+					type: "post",
+					url: apihost + "Service/GetNewsDetail?lang=CH&id=" + newsid,
+					async: true,
+					dataType: "jsonp",
+					jsonp: "callback",
+					jsonpCallback: "success_jsonpCallback",
+					success: function(data) {
+						//console.info($(data.PAGE))
+						$('.blog-info h4 a').html(data.TITLE);
+						$('#title').text('发布日期   ' + data.TIME);
+						$('#content').html($(data.PAGE));
+					},
+					error: function() {
+
+					}
+				});
+			};
+
+			jQuery(document).ready(function($) {
+				$('#share-1').share({
+					sites: ['qq', 'weibo', 'wechat']
+				});
+				$(".scroll").click(function(event) {
+					event.preventDefault();
+					$('html,body').animate({
+						scrollTop: $(this.hash).offset().top
+					}, 1000);
+				});
+				getNewsDetail();
+			});
+		</script>
+		<!-- start-smoth-scrolling -->
+	</head>
+
+	<body>
+		<!-- header -->
+		<div class="header" id="move-top">
+			<div class="container">
+				<div class="header-left">
+					<div class="logo">
+						<h1><a href="index.html">
+						<img src="images/1.pic.jpg" width="60px" height="60px" alt="rundo" >
+						润东医药研发（上海）有限公司</a></h1>
+					</div>
+				</div>
+				<div class="header-right">
+					<div class="row">
+						<div class="col-xs-8">
+							<ul>
+								<li>
+									<div id="share-1"></div>
+								</li>
+							</ul>
+						</div>
+						<div class="col-xs-1" style="margin-left: 60px; margin-top: 5px;">
+							<div class="btn-group">
+								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+								中文 <span class="caret"></span>
+							</button>
+								<ul class="dropdown-menu" style="min-width: 60px;" role="menu">
+									<li>
+										<a href="index.html">中文</a>
+									</li>
+									<li>
+										<a href="indexEN.html">English</a>
+									</li>
+									<!--<li>
+									<a href="#">日本語</a>
+								</li>-->
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+		<!-- //header -->
+		<!-- banner -->
+		<div class="banner1" style="float:center;display:block;position:absolute;z-index:998; width: 100%;">
+			<div class="container">
+				<div class="banner-navigation">
+					<div class="banner-nav" style="width: 100%;">
+						<span class="menu"><img src="images/menu.png" alt=" "/></span>
+						<ul class="nav1">
+							<li class="hvr-sweep-to-top">
+								<a href="index.html">首页</a>
+							</li>
+							<li class="hvr-sweep-to-top">
+								<a href="index.html#welcome">公司介绍</a>
+							</li>
+							<li class="hvr-sweep-to-top">
+								<a href="index.html#services">服务范围</a>
+							</li>
+							<li class="hvr-sweep-to-top cap">
+								<a href="index.html#news">资讯中心</a>
+							</li>
+							<li class="hvr-sweep-to-top">
+								<a href="index.html#cooperate">合作伙伴</a>
+							</li>
+							<li class="hvr-sweep-to-top">
+								<a href="index.html#testimonials">加入我们</a>
+							</li>
+							<li class="hvr-sweep-to-top">
+								<a href="index.html#contactus">联系我们</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<!-- script for menu -->
+				<script>
+					$("span.menu").click(function() {
+						$("ul.nav1").slideToggle(300, function() {
+							// Animation complete.
+						});
+					});
+				</script>
+				<!-- //script for menu -->
+			</div>
+		</div>
+		<!-- //banner -->
+		<!--blog-->
+		<div class="blog">
+			<div class="container">
+				<div class="col-md-12">
+					<div class="blog-info">
+						<h4><a href="single.html"></a></h4>
+						<p id="title">发布日期 2015-10-15</p>
+						<div id="content">
+						</div>
+						<a href="newslist.html?p=1" class="btn btn-primary hvr-rectangle-in">查看更多</a>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+		<!--//blog-->
+		<!-- footer -->
+		<div class="footer">
+			<div class="container">
+				<div class="footer-bottom-at">
+					<div class="col-md-6 footer-grid">
+						<a href="index.html"><img src="images/1.pic.jpg" width="60px" height="60px" alt="rundo"></a>润东医药研发（上海）有限公司
+					</div>
+					<div class="col-md-6 footer-grid-in">
+						<ul class="footer-nav">
+							<li class="scroll">
+								<a href="index.html">首页</a>
+							</li>
+							<li>
+								<a href="#welcome">公司介绍</a>
+							</li>
+							<li>
+								<a href="#services" class="scroll">服务范围</a>
+							</li>
+							<li>
+								<a href="#news" class="scroll">资讯中心</a>
+							</li>
+							<li>
+								<a href="#cooperate">合作伙伴</a>
+							</li>
+							<li>
+								<a href="#testimonials">加入我们</a>
+							</li>
+							<li>
+								<a href="contact.html">联系我们</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+				<div>
+					<p>地址：中国上海市黄浦区汉口路266号申大厦18楼 邮编：200001 TEL：021-51080001 FAX：021-51080020</p>
+				</div>
+				<div>
+					<p class="footer-class">版权所有©2016 润东医药研发（上海）有限公司 沪ICP备12019127号</p>
+				</div>
+			</div>
+		</div>
+		<!-- //footer -->
+		<!-- here stars scrolling icon -->
+		<script type="text/javascript">
+			$(document).ready(function() {
+				/*
+					var defaults = {
+					containerID: 'toTop', // fading element id
+					containerHoverID: 'toTopHover', // fading element hover id
+					scrollSpeed: 1200,
+					easingType: 'linear' 
+					};
+				*/
+				$().UItoTop({
+					easingType: 'easeOutQuart'
+				});
+			});
+		</script>
+		<!-- //here ends scrolling icon -->
+	</body>
+
+</html>

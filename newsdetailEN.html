@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Rundo International Pharmaceutical Research & Development Co.,LTD</title>
+		<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+		<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+		<link rel="stylesheet" href="css/share.min.css">
+		<style>
+			html,
+			body,
+			div,
+			span,
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6,
+			p,
+			a,
+			ol,
+			ul,
+			li,
+			section {
+				font-family: arial;
+			}
+		</style>
+
+		<!-- js -->
+		<script src="js/config.js"></script>
+		<script src="js/jquery-1.11.1.min.js"></script>
+		<script src="js/jquery.share.min.js"></script>
+		<!-- //js -->
+		<!-- for-mobile-apps -->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="keywords" content="Dental Care Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+		<script type="application/x-javascript">
+			addEventListener("load", function() {
+				setTimeout(hideURLbar, 0);
+			}, false);
+
+			function hideURLbar() {
+				//window.scrollTo(0, 1);
+			}
+		</script>
+		<!-- //for-mobile-apps -->
+		<!-- start-smoth-scrolling -->
+		<script type="text/javascript" src="js/move-top.js"></script>
+		<script type="text/javascript" src="js/easing.js"></script>
+		<script type="text/javascript">
+			function getQueryString(name) {
+				var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+				var r = window.location.search.substr(1).match(reg);
+				if(r != null) return unescape(r[2]);
+				return null;
+			}
+
+			function getNewsDetail() {
+				var newsid = getQueryString('id');
+				$.ajax({
+					type: "post",
+					url: apihost + "Service/GetNewsDetail?lang=EN&id=" + newsid,
+					async: true,
+					dataType: "jsonp",
+					jsonp: "callback",
+					jsonpCallback: "success_jsonpCallback",
+					success: function(data) {
+						//console.info($(data.PAGE))
+						$('.blog-info h4 a').html(data.TITLE);
+						$('#title').text('Post Date   ' + data.TIME);
+						$('#content').html($(data.PAGE));
+					},
+					error: function() {
+
+					}
+				});
+			};
+
+			jQuery(document).ready(function($) {
+				$('#share-1').share({
+					sites: ['qq', 'weibo', 'wechat']
+				});
+				$(".scroll").click(function(event) {
+					event.preventDefault();
+					$('html,body').animate({
+						scrollTop: $(this.hash).offset().top
+					}, 1000);
+				});
+				getNewsDetail();
+			});
+		</script>
+		<!-- start-smoth-scrolling -->
+	</head>
+
+	<body>
+		<!-- header -->
+		<div class="header" id="move-top">
+			<div class="container">
+				<div class="header-left">
+					<div class="logo">
+						<h4><a href="indexEN.html" style="font-size:23px ;">
+						<img src="images/1.pic.jpg" width="60px" height="60px" alt="rundo" >
+						Rundo International Pharmaceutical Research & Development Co.,LTD</a></h4>
+					</div>
+				</div>
+				<div class="header-right">
+					<div class="row">
+						<div class="col-xs-8">
+							<ul>
+								<li>
+									<div id="share-1"></div>
+								</li>
+							</ul>
+						</div>
+						<div class="col-xs-1" style="margin-left: 60px; margin-top: 5px;">
+							<div class="btn-group">
+								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+								中文 <span class="caret"></span>
+							</button>
+								<ul class="dropdown-menu" style="min-width: 60px;" role="menu">
+									<li>
+										<a href="index.html">中文</a>
+									</li>
+									<li>
+										<a href="indexEN.html">English</a>
+									</li>
+									<!--<li>
+									<a href="#">日本語</a>
+								</li>-->
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+		<!-- //header -->
+		<!-- banner -->
+		<div class="banner1" style="float:center;display:block;position:absolute;z-index:998; width: 100%;">
+			<div class="container">
+				<div class="banner-navigation">
+					<div class="banner-nav">
+						<span class="menu"><img src="images/menu.png" alt=" "/></span>
+						<ul class="nav1">
+							<li class="hvr-sweep-to-top cap">
+								<a href="indexEN.html">Home</a>
+							</li>
+							<li class="hvr-sweep-to-top">
+								<a href="indexEN.html#welcome">About Us</a>
+							</li>
+							<li class="hvr-sweep-to-top">
+								<a href="indexEN.html#services">Scope of Service</a>
+							</li>
+							<li class="hvr-sweep-to-top cap">
+								<a href="indexEN.html#news">News</a>
+							</li>
+							<li class="hvr-sweep-to-top">
+								<a href="indexEN.html#cooperate">Cooperation</a>
+							</li>
+							<li class="hvr-sweep-to-top">
+								<a href="indexEN.html#testimonials">Join Us</a>
+							</li>
+							<li class="hvr-sweep-to-top">
+								<a href="indexEN.html#contactus">Contact Us</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<!-- script for menu -->
+				<script>
+					$("span.menu").click(function() {
+						$("ul.nav1").slideToggle(300, function() {
+							// Animation complete.
+						});
+					});
+				</script>
+				<!-- //script for menu -->
+			</div>
+		</div>
+		<!-- //banner -->
+		<!--blog-->
+		<div class="blog">
+			<div class="container">
+				<div class="col-md-12">
+					<div class="blog-info">
+						<h4><a href="single.html"></a></h4>
+						<p id="title">发布日期 2015-10-15</p>
+						<div id="content">
+						</div>
+						<a href="newslistEN.html?p=1" class="btn btn-primary hvr-rectangle-in">Read More</a>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+		<!--//blog-->
+		<!-- footer -->
+		<div class="footer">
+			<div class="container">
+				<div>
+					<div class="footer-bottom-at">
+						<div class="col-md-6 footer-grid">
+							<a href="index.html"><img src="images/1.pic.jpg" width="60px" height="60px" alt="rundo"></a>Rundo International Pharmaceutical Research & Development Co.,LTD
+						</div>
+
+					</div>
+					<div class="clearfix"> </div>
+					<div class="col-md-12">
+						<ul class="footer-nav">
+							<li class="scroll">
+								<a href="index.html">Home</a>
+							</li>
+							<li>
+								<a href="#welcome">About Us</a>
+							</li>
+							<li>
+								<a href="#services" class="scroll">Scope of Service</a>
+							</li>
+							<li>
+								<a href="#news" class="scroll">News</a>
+							</li>
+							<li>
+								<a href="#cooperate">Cooperation</a>
+							</li>
+							<li>
+								<a href="#testimonials">Join Us</a>
+							</li>
+							<li>
+								<a href="contact.html">Contact Us</a>
+							</li>
+						</ul>
+					</div>
+					<div class="clearfix"> </div>
+					<div class="footaddress">
+						<p>Address: Hankou Road, Huangpu District, Shanghai, China Shanghai Tower, 18th Floor, No. 266 Zip: 200001 TEL :021-51080001 FAX :021-51080020</p>
+					</div>
+					<div>
+						<p class="footer-class">Copyright © Rundo International Pharmaceutical Research & Development Co., Ltd. 沪ICP备12019127号</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- //footer -->
+
+		<!-- here stars scrolling icon -->
+		<script src="js/owl.carousel.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				/*
+					var defaults = {
+					containerID: 'toTop', // fading element id
+					containerHoverID: 'toTopHover', // fading element hover id
+					scrollSpeed: 1200,
+					easingType: 'linear' 
+					};
+				*/
+				$().UItoTop({
+					easingType: 'easeOutQuart'
+				});
+			});
+			var owl = $('.owl-carousel-main');
+			owl.owlCarousel({
+				items: 1,
+				mouseDrag: true,
+				loop: true,
+				margin: 0,
+				responsiveClass: true,
+				nav: true,
+				dots: true,
+				autoHeight: true,
+				smartSpeed: 500,
+				autoplay: true,
+				autoplayHoverPause: true,
+				navText: [
+					"<i class='icon-chevron-left owl-direction'></i>",
+					"<i class='icon-chevron-right owl-direction'></i>"
+				]
+			});
+			$(window).resize(function() {
+				owl.trigger('refresh.owl.carousel');
+			});
+		</script>
+		<!-- //here ends scrolling icon -->
+		<!-- //footer -->
+		<!-- here stars scrolling icon -->
+		<script type="text/javascript">
+			$(document).ready(function() {
+				/*
+					var defaults = {
+					containerID: 'toTop', // fading element id
+					containerHoverID: 'toTopHover', // fading element hover id
+					scrollSpeed: 1200,
+					easingType: 'linear' 
+					};
+				*/
+				$().UItoTop({
+					easingType: 'easeOutQuart'
+				});
+			});
+		</script>
+		<!-- //here ends scrolling icon -->
+	</body>
+
+</html>

@@ -1,0 +1,862 @@
+﻿<head>
+	<title>Rundo International Pharmaceutical Research & Development Co.,LTD</title>
+	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+	<link rel="stylesheet" href="css/share.min.css">
+	<link href="css/animate.min.css" rel="stylesheet" type="text/css" media="all" />
+	<!-- js -->
+	<script src="js/config.js"></script>
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="js/jquery.lazyload.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.share.min.js"></script>
+	<!-- //js -->
+	<style>
+		html,
+		body,
+		div,
+		span,
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6,
+		p,
+		a,
+		ol,
+		ul,
+		li,
+		label,
+		table,
+		tr,
+		th,
+		td,
+		header {
+			font-family: arial;
+		}
+	</style>
+	<!-- for-mobile-apps -->
+<!--	<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">-->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="CROU,Rundo,润东医药" />
+	<script type="application/x-javascript">
+		addEventListener("load", function() {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			//window.scrollTo(0, 1);
+		}
+	</script>
+	<!-- //for-mobile-apps -->
+	<!-- start-smoth-scrolling -->
+	<script type="text/javascript" src="js/move-top.js"></script>
+	<script type="text/javascript" src="js/easing.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$("img.lazy").lazyload();
+			$('#share-1').share({
+				sites: ['qq', 'weibo', 'wechat']
+			});
+			$(".scroll").click(function(event) {
+				event.preventDefault();
+				$('html,body').animate({
+					scrollTop: $(this.hash).offset().top
+				}, 1000);
+			});
+			//get news lit
+			getNewsSection();
+		});
+
+		function getNewsSection() {
+			$.ajax({
+				type: "post",
+				url: apihost + "Service/GetNewsList?ispop=0&index=1&size=6&lang=EN",
+				async: true,
+				dataType: "jsonp",
+				jsonp: "callback",
+				jsonpCallback: "success_jsonpCallback",
+				success: function(obj) {
+					//console.info(obj.DATA);
+					$.each(obj.DATA, function(i) {
+						var news = $('<div class="col-md-4 news-section-grid">');
+						var post = $('<div class="article_post">');
+						var newsDetailUrl = 'newsdetailEN.html?id=' + obj.DATA[i].INFO_ID;
+						var img = $('<a>').attr('href', newsDetailUrl).append($('<img>').attr('src', obj.DATA[i].INFO_FRONT_PAGE_IMAGE));
+						var title = $('<a class="news-post">').attr('href', newsDetailUrl).text(obj.DATA[i].INFO_TITLE);
+						var content = $('<div>').append($('<p>').html(obj.DATA[i].INFO_BRIEF));
+						var more = $('<a class="more-news">').attr('href', 'newslistEN.html?p=1').text('Read More');
+						$(post).append($(img)).append($(title)).append($(content)).append($(more));
+						$(news).append($(post));
+						$('.news-section-grids').append($(news))
+					});
+				},
+				error: function() {
+					//
+				}
+			});
+		};
+	</script>
+	<!-- start-smoth-scrolling -->
+</head>
+
+<body>
+	<!-- header -->
+	<div class="header" id="move-top">
+		<div class="container">
+			<div class="header-left">
+				<div class="logo">
+					<h4><a href="indexEN.html" style="font-size:23px ;">
+						<img src="images/1.pic.jpg" width="60px" height="60px" alt="rundo" >
+						Rundo International Pharmaceutical Research & Development Co.,LTD</a></h4>
+				</div>
+			</div>
+			<div class="header-right">
+				<div class="row">
+					<div class="col-xs-8">
+						<ul>
+							<li>
+								<div id="share-1"></div>
+							</li>
+						</ul>
+					</div>
+					<div class="col-xs-1" style="margin-left: 60px; margin-top: 5px;">
+						<div class="btn-group">
+							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+								English <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu" style="min-width: 60px;z-index:999" role="menu">
+								<li>
+									<a href="index.html">中文</a>
+								</li>
+								<li>
+									<a href="indexEN.html">English</a>
+								</li>
+								<!--<li>
+									<a href="#">日本語</a>
+								</li>-->
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+	<!-- //header -->
+
+	<div class="header-banner">
+		<div class="banner" style="float:center;display:block;">
+			<div class="banner-navigation" style="float:center;display:block;position:absolute;z-index:998; width: 100%;">
+				<div class="banner-nav">
+					<span class="menu"><img class="lazy" src="images/menu.png" alt=""/></span>
+					<ul class="nav1">
+						<li class="hvr-sweep-to-top cap">
+							<a href="indexEN.html">Home</a>
+						</li>
+						<li class="hvr-sweep-to-top">
+							<a href="#welcome">About Us</a>
+						</li>
+						<li class="hvr-sweep-to-top">
+							<a href="#services">Scope of Service</a>
+						</li>
+						<li class="hvr-sweep-to-top">
+							<a href="#news">News</a>
+						</li>
+						<li class="hvr-sweep-to-top">
+							<a href="#cooperate">Cooperation</a>
+						</li>
+						<li class="hvr-sweep-to-top">
+							<a href="#testimonials">Join Us</a>
+						</li>
+						<li class="hvr-sweep-to-top">
+							<a href="#contactus">Contact Us</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!-- script for menu -->
+			<script>
+				$("span.menu").click(function() {
+					$("ul.nav1").slideToggle(300, function() {
+						// Animation complete.
+					});
+				});
+			</script>
+			<!-- //script for menu -->
+		</div>
+
+		<!---------------------------------------------->
+		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+			<!-- Indicators -->
+			<ol class="carousel-indicators">
+				<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+				<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+				<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+			</ol>
+			<!-- Wrapper for slides -->
+			<div class="carousel-inner" role="listbox">
+				
+				<div class="item active">
+					<img src="images/rundo_slider_6_2_dark.png">
+					<div class="slider_caption" id="slider_caption2" style="height: 200%;top: 0%;">
+						<h2 style="margin-top: 15%;">Our Mission</h2>
+						<p style="font-size: 40px;">To aid the development of new pharmaceuticals to benefit mankind</p>
+						<h2>Our Values</h2>
+						<p style="font-size: 40px;">To maintain integrity while striving for excellence</p>
+					</div>
+				</div>
+				<div class="item">
+					<img class="lazy" src="images/rundo_slider_7_1_dark.png" >
+					<div class="slider_caption" style="height: 200%;top: 0%;">
+						<h2 style="margin-top: 20%;">Our Vision</h2>
+						<p style="font-size: 40px;">To become the Chinese CRO,known across the globe</p>
+					</div>
+				</div>
+				<div class="item">
+					<img class="lazy" src="images/rundo_slider_6_1_dark.png">
+					<div class="slider_caption" style="height: 200%;top: 0%;">
+						<h2 style="margin-top: 25%;font-size: 30px;">News：Chinese medicine entrepreneurs convention</h2>
+						<a class="slider_btn" href="newslistEN.html?p=1">Read More</a>
+					</div>
+				</div>
+			</div>
+
+			<!-- Controls -->
+			<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev" style="z-index:998">
+				<span class="glyphicon glyphicon-chevron-left"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+			<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next" style="z-index:998">
+				<span class="glyphicon glyphicon-chevron-right"></span>
+				<span class="sr-only">Next</span>
+			</a>
+		</div>
+		<!---------------------------------------------->
+	</div>
+	<!---->
+	<!-- welcome -->
+	<div class="services w3l wow fadeInDown" data-wow-duration=".8s" data-wow-delay=".2s">
+		<div class="container" id="welcome">
+			<div class="grid_3 grid_5">
+				<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+					<ul id="gsjsTab" class="nav nav-tabs nav-justified" role="tablist">
+						<li role="presentation" class="active">
+							<a href="#gsgk" id="gsgk-tab" role="tab" data-toggle="tab" aria-controls="gsgk" aria-expanded="true">Company Overview</a>
+						</li>
+						<li role="presentation" class="">
+							<a href="#gsln" role="tab" id="gsln-tab" data-toggle="tab" aria-controls="gsln">Company Concept</a>
+						</li>
+						<li role="presentation" class="">
+							<a href="#gsys" role="tab" id="gsys-tab" data-toggle="tab" aria-controls="gsys">Company Strengths</a>
+						</li>
+						<!--<li role="presentation" class="">
+							<a href="#gstd" role="tab" id="gstd-tab" data-toggle="tab" aria-controls="gstd">Company Team</a>
+						</li>-->
+						<li role="presentation" class="">
+							<a href="#gsfb" role="tab" id="gsfb-tab" data-toggle="tab" aria-controls="gsfb">Geographical Coverage</a>
+						</li>
+						<li role="presentation" class="">
+							<a href="#gskf" role="tab" id="gskf-tab" data-toggle="tab" aria-controls="gskf">Major <br> Clients</a>
+						</li>
+						<li role="presentation" class="">
+							<a href="#gszs" role="tab" id="gszs-tab" data-toggle="tab" aria-controls="gszs">Certificates and Awards</a>
+						</li>
+						<li role="presentation" class="">
+							<a href="#gszgs" role="tab" id="gszgs-tab" data-toggle="tab" aria-controls="gszgs">Subsidiary Company</a>
+						</li>
+					</ul>
+					<div id="gsTabContent" class="tab-content">
+						<div role="tabpanel" class="tab-pane active" id="gsgk" aria-labelledby="gsgk-tab">
+							<div class="container">
+								<div class="welcome-head text-center">
+									<h2>Welcome to Rundo International Pharmaceutical Research & Development Co., Ltd. </h2>
+									<p>
+										Founded in 2004, Rundo International Pharmaceutical Research & Development Co., Ltd. (Rundo) is one of the top Chinese CROs specialized in providing Professional Clinical Research Outsourcing Services to Domestic and International clients. Rundo was one of the main promoters in the establishment of the Chinese CRO Union (CROU). Now, we are the Chairman Unit of the CROU and also the first Chinese CRO to obtain ISO9001:2008 accreditation plus CRO codes of practice certificate.
+									</p>
+								</div>
+								<div class="welcome-grids">
+									<div class="col-md-6 welcome-left">
+										<img class="lazy" src="images/rundo_slider_2.JPG" alt="" />
+									</div>
+									<div class="col-md-6 welcome-right">
+										<h3>Company Overview</h3>
+										<p>Rundo is based in Shanghai with branches located in Beijing and a subsidiary clinical data management (CDM) centre in Nantong. Additionally, Rundo has offices and home-based staff in more than 20 provinces around China. Over the past 10 years since establishment, Rundo has carried out over 480 trials covering a wide range of Therapeutic Areas (TA) including Oncology, Cardiology, Respiratory, Gastroenterology, Endocrinology, CNS, Anti-Infection and many others. Our Nantong CDM centre has undertaken a vast number of Data Management and Drug Safety Data Management services, gaining praise from our Sponsors from America, Europe and Japan with high quality and efficiency.</p>
+										<p>In order to meet the increasing demand for Pac-Asia clinical trials, Rundo, in collaboration with the other core countries and regions, including Japan, Korea, Taiwan etc. - established the Alliance for Pac-Asia Clinical Trials (A-PACT). After a three-year trial run, A-PACT was officially established in Shanghai in May, 2012. With unified SOPs and Project Management approach, A-PACT has already won the interest of numerous Sponsors, offering high quality, efficient and flexible Regional solutions at reasonable costs. </p>
+										<p>Being at the forefront of the pharmaceutical industry, Rundo provides its Sponsors with high quality services compliant with ICH-GCP, CFDA-GCP and other related regulations. By virtue of its own strength and recognition from Sponsors, Rundo has become one of the leading CROs in the Chinese CRO industry. Our business has already extended outside the China market and into the rest of Pac-Asia as well as Europe and America.</p>
+									</div>
+									<div class="clearfix"></div>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+						<div role="tabpanel" class="tab-pane fade" id="gsln" aria-labelledby="gsln-tab">
+							<div class="container">
+								<div class="welcome-head text-center">
+									<h2>Company Concep</h2>
+								</div>
+								<div class="welcome-grids">
+									<div class="col-md-6 welcome-left">
+										<img class="lazy" src="images/bg.jpg" width="540" alt="" />
+									</div>
+									<div class="col-md-6 welcome-right">
+										<div class="welcome-mission">
+											<div class="welcome-mission-header">
+												<h3>Our Mission</h3>
+												<h4>To aid the development of new pharmaceuticals to benefit mankind</h4>
+											</div>
+										</div>
+										<div class="welcome-mission">
+											<div class="welcome-mission-header">
+												<h3>Our Values</h3>
+												<h4>To maintain integrity while striving for excellence</h4>
+											</div>
+										</div>
+										<div class="welcome-mission">
+											<div class="welcome-mission-header">
+												<h3>Our Vision</h3>
+												<h4>To become the Chinese CRO,known across the globe</h4>
+											</div>
+										</div>
+									</div>
+									<div class="clearfix"></div>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+						<div role="tabpanel" class="tab-pane fade" id="gsys" aria-labelledby="gsys-tab">
+							<div class="container">
+								<div class="welcome-head text-center">
+									<h2>Company Strengths</h2>
+								</div>
+								<div class="welcome-grids">
+									<div class="col-md-6 welcome-left">
+										<img class="lazy" src="images/background-dna-strand.jpg" width="540" height="310" alt="" />
+									</div>
+									<div class="col-md-6 welcome-right">
+										<ol class="welcome-advantage jumbotron">
+											<li>Stable & professional team</li>
+											<li>Expert advisory board with representatives from all fields of medicine</li>
+											<li>Having assisted numerous Sites to pass CFDA Inspection and become certified clinical trial Sites, and as?result, have established strong relationships with them</li>
+											<li>Has an international first-class data management system</li>
+											<li>A member of A-PACT</li>
+										</ol>
+									</div>
+									<div class="clearfix"></div>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+						<!--<div role="tabpanel" class="tab-pane fade" id="gstd" aria-labelledby="gstd-tab">
+							<div class="container">
+								<div class="welcome-head text-center">
+									<h2>Company Team</h2>
+									<img class="lazy" src="images/rundoorg.png" alt="" />
+								</div>
+								<div class="clearfix"></div>
+							</div>
+						</div>-->
+						<div role="tabpanel" class="tab-pane fade" id="gsfb" aria-labelledby="gsfb-tab">
+							<div class="container">
+								<div class="welcome-head text-center">
+									<h2>Company Geographical Coverage</h2>
+									<a href="images/maporg.jpg"><img class="lazy" src="images/maporg.jpg" width="800px" height="644px" /></a>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+						<div role="tabpanel" class="tab-pane fade" id="gskf" aria-labelledby="gskf-tab">
+							<div class="container">
+								<div class="welcome-head text-center">
+									<h2>Major Clients</h2>
+									<div class="row">
+										<img class="lazy" src="images/rdcustomer.png" alt="" />
+										<img class="lazy" src="images/rdcustomer2.png" alt="" />
+									</div>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+						<div role="tabpanel" class="tab-pane fade" id="gszs" aria-labelledby="gszs-tab">
+							<div class="container">
+								<div class="welcome-head text-center">
+									<h2>Certificates and Awards</h2>
+									<div class="row">
+										<img class="lazy" src="images/rundohonor1.png" />
+									</div>
+									<div class="row">
+										<img class="lazy" src="images/rundohonor2.png" />
+									</div>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+						<div role="tabpanel" class="tab-pane fade" id="gszgs" aria-labelledby="gszgs-tab">
+							<div class="container">
+								<div class="welcome-head text-center">
+									<h2>Subsidiary Company</h2>
+									<div class="row jumbotron">
+										<h3>Nantong Rundo International Pharmaceutical Research & Development Co., Ltd.</h3>
+										<div class="row" style="background-color: #fff;">
+											<div class="col-md-4">
+												<a href="images/nt-fgs-org.jpg"><img class="lazy" src="images/nt-fgs-en.jpg" width="280px" /></a>
+											</div>
+											<div class="col-md-8">
+												<br>
+												<br>
+												<br>
+												<p>Nantong Rundo International Pharmaceutical Research & Development Co., Ltd. (Nantong Rundo) was is a wholly-owned subsidiary to Rundo International Pharmaceutical Research & Development Co., Ltd. (Rundo) and was formed as Rundo’s Biometrics Center in 2004 for clinical data operation business need. As the business grows up, Nantong Rundo have been able to provide talent resources and full service packages, like clinical data management, clinical SAS programming, Pharmacovigilance(PV)… and so on. Nantong Rundo, the Biometrics center has undertaken a vast number of services, gaining praise from our Sponsors from America, Europe and Japan with high quality and efficiency..</p>
+											</div>
+										</div>
+									</div>
+									<div class="row jumbotron">
+										<h3>SMO Subsidiary</h3>
+										<div class="row" style="background-color: #fff;">
+											<div class="col-md-4">
+												<a href="images/sjfgs.png"><img class="lazy" src="images/sjfgs.jpg" width="280px" /></a>
+											</div>
+											<div class="col-md-8">
+												<br>
+												<br>
+												<br>
+												<p>Shanghai Shoujia Clinical Medicine Research Co. Ltd was established in 2012, is a wholly owned subsidiary, is the site management organizations to assist clinical trial institutions on-site management and operation of the specific clinical trials (Site Management, Organization, SMO) is one of the earliest CRC service company.</p>
+												<p>In addition to providing CRC services, but also provide clinical testing institutions and professional departments to identify and review counseling, clinical trials related training, patient education and subjects recruited and other services.</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- service -->
+	<div class="services w3l wow fadeInDown" data-wow-duration=".8s" data-wow-delay=".2s">
+		<div class="container" id="services">
+			<div class="grid_3 grid_5">
+				<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+					<ul id="myTab" class="nav nav-tabs nav-justified" role="tablist">
+						<li role="presentation" class="active">
+							<a href="#expeditions" id="expeditions-tab" role="tab" data-toggle="tab" aria-controls="expeditions" aria-expanded="true">Clinical Research</a>
+						</li>
+						<li role="presentation" class="">
+							<a href="#safari" role="tab" id="safari-tab" data-toggle="tab" aria-controls="safari">Data Management</a>
+						</li>
+						<li role="presentation" class="">
+							<a href="#trekking" role="tab" id="trekking-tab" data-toggle="tab" aria-controls="trekking">SAS Programming</a>
+						</li>
+						<li role="presentation" class="">
+							<a href="#tjfx" role="tab" id="tjfx-tab" data-toggle="tab" aria-controls="tjfx"> <br>Biostatistics </a>
+						</li>
+						<li role="presentation" class="">
+							<a href="#yxxz" role="tab" id="yxxz-tab" data-toggle="tab" aria-controls="yxxz">Medical Writing</a>
+						</li>
+						<li role="presentation" class="">
+							<a href="#fgzc" role="tab" id="fgzc-tab" data-toggle="tab" aria-controls="fgzc">Regulatory Affairs</a>
+						</li>
+						<li role="presentation" class="">
+							<a href="#zlbz" role="tab" id="zlbz-tab" data-toggle="tab" aria-controls="zlbz">Quality Assurance</a>
+						</li>
+						<li role="presentation" class="">
+							<a href="#xmhz" role="tab" id="xmhz-tab" data-toggle="tab" aria-controls="xmhz">Staff Outsourcing</a>
+						</li>
+					</ul>
+					<div id="myTabContent" class="tab-content">
+						<div role="tabpanel" class="tab-pane active" id="expeditions" aria-labelledby="expeditions-tab">
+							<div class="jumbotron">
+								<p>Over the past years since establishment, Rundo has carried out over 480 trials in a wide range of therapeutic Areas including Respiratory, Gastroenterology, Oncology, Endocrinology, Cardiology, Dermatology, Nutriology and many others through Phase I to Phase IV. Rather amount of them are Global trials. Rundo’s branches cover all CFDA approval sites to provide you with convenient, high quality project management and monitoring services</p>
+								<p> Project Management - To develop and implement project management plan and risk management plan - To develop and implement project budget management plan - To help customers complete the center screening with the fastest speed, researchers selection and patient recruitment - To organize and hold regular meetings of researchers Monitoring - In the process of clinical monitoring, strictly implementing the Company's and customers’ SOP - Verification of case report form, raw data and resolving data question table and all related work of monitoring - Center Screening, start, regular, visits closing - Assist researchers to provide customers and government regulatory department with serious adverse events reports and related documents - Reservation, distribution and verification of investigational drugs - Management and update of research documents. </p>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						<div role="tabpanel" class="tab-pane fade" id="safari" aria-labelledby="safari-tab">
+							<div class="jumbotron">
+								<p>All Rundo DM staff are of a medical-related background, are familiar with all kinds of data management systems and are proficient in three languages (Chinese, English and Japanese). Rundo purchased Oracle Clinical (including RDC system) and our DM team is very familiar with the system. Additionally, Rundo has experience utilizing numerous sponsor-provided systems. We provide you high quality, low cost DM services.</p>
+								<p> - Data Management Consulting </p>
+								<p> - Data Management Manual / Guide </p>
+								<p> - Project Training</p>
+								<p> - Database design and build</p>
+								<p> - Data entry and proofreading</p>
+								<p> - Data validation and questions resolved </p>
+								<p> - Medical Coding </p>
+								<p> - Data Quality Monitoring</p>
+								<p> - Data Management Report </p>
+								<p> - Database lock and transfer </p>
+								<p> - Central Laboratory data transmission</p>
+								<p> - Filing</p>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						<div role="tabpanel" class="tab-pane fade" id="trekking" aria-labelledby="trekking-tab">
+							<div class="jumbotron">
+								<p>【Rundo’s SAS programming team consists of professional SAS Programmers trained both overseas and domestically. We can provide support for clinical trials in all the key areas including SAS analysis database, regulatory required database setup with CDISC standard, statistics TFL output, etc. Team members are skillful at programming using advanced tools such as SAS macros and SQL language and compliant with industry standard process such as double programming to guarantee quality. In addition, our Functional Service Provider (FSP) model for SAS programming has received strong interest for further collaboration from a number of US clients.</p>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						<div role="tabpanel" class="tab-pane fade" id="tjfx" aria-labelledby="tjfx-tab">
+							<div class="jumbotron">
+								<p>Our highly professional and experienced Biostatisticians can assist Sponsors to design cost efficient, safe and low-risk Statistical Protocols and Statistical Analysis Reports that meet all the latest industry standards.</p>
+								<p>
+									<br> - Test sample design
+									<br> - Test program and CRF Design Consulting (Phase I ~IV)
+									<br> - Design randomize table & randomized perform
+									<br> - Statistical analysis plan development
+									<br> - SAS Programming & procedures confirmation
+									<br> - Statistical analysis (including the interim analysis, final analysis, blind review, etc.)
+									<br> - Statistical Report Writing
+								</p>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						<div role="tabpanel" class="tab-pane fade" id="yxxz" aria-labelledby="yxxz-tab">
+							<div class="jumbotron">
+								<p>All our Medical Writing staff are MDs or hold Master degrees from abroad, and have many years’ experience in medical writing to assure the quality of your clinical trial documents. Following strict SOPs and offering a flexible pricing system, we can assist you to design and/or compose a variety of clinical trial documentation.</p>
+								<p>
+									- Clinical trial design (I-IV stage) <br> - CRF design <br> - ICF writing <br> - Documents translation related to Clinical trials <br> - Literature search and review related to Clinical trials<br> - Medical Writing (including clinical research summary reports, medical articles, research reports, etc.)
+								</p>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						<div role="tabpanel" class="tab-pane fade" id="fgzc" aria-labelledby="fgzc-tab">
+							<div class="jumbotron">
+								<p>【A professional experienced team with a comprehensive understanding of the various registration pathways for all kinds of products including pharmaceuticals, medical devices, functional foods etc. Keep close communication with local health authorities to help your products imported and listed.</p>
+								<p>- Consulting business: Registration feasibility study on drugs, medical devices, health care products. - Registration business: Registration of pharmaceuticals, medical equipment, and health products. - Include:</p>
+								<p>
+									Data translation and proofreading (including English, Japanese and other languages.) Organize, edit application report and prepare the review materials Maintain contact with the CFDA, CDE and other related departments, regularly follow the registration process
+								</p>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						<div role="tabpanel" class="tab-pane fade" id="zlbz" aria-labelledby="zlbz-tab">
+							<div class="jumbotron">
+								<p>【Clinical trials audit services include audit and inspection of Research Center and applicants’ research documents. Our inspectors have over 10 years of relevant work experience in clinical trials; the company has undertaken more than ten audit projects since its establishment, mostly for projects of international multi-center. Our audit standard is according to ICH GCP and relevant national regulations, and the main customers are the world's top 20 major pharmaceutical companies.</p>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						<div role="tabpanel" class="tab-pane fade" id="xmhz" aria-labelledby="xmhz-tab">
+							<div class="jumbotron">
+								<p>Rundo has access to an extensive talent pool of professionals from various fields in clinical research such as CRA, CTA, Data Managers etc., for outsourcing, of which numerous Big Pharma are currently taking advantage of. When outsourced, our staff may work with clients’ team. The majority of our Clients are large multinational pharma, for these services are long-term, each having collaborated with us, on average, for over 3 years due to our high-quality level for service.</p>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end service -->
+	<!--/index-team-->
+	<!-- //banner-bottom -->
+	<!-- news -->
+	<div class="news" id="news">
+		<div class="container">
+			<div class="news-section-head text-center">
+				<h3>News</h3>
+			</div>
+			<div class="news-section-grids">
+			</div>
+		</div>
+	</div>
+	<!--Cooperate-->
+	<div class="service-section" id="cooperate">
+		<div class="container">
+			<div class="service-section-head text-center wow fadeInRight" data-wow-delay="0.4s">
+				<h3>Cooperation</h3>
+				<p></p>
+			</div>
+			<div class="service-section-grids">
+				<div class="col-md-6 service-grid">
+					<div class="service-section-grid">
+						<div class="icon">
+							<span><img class="lazy" src="images/apact.png" ></span>
+						</div>
+						<div class="icon-text">
+							<br>
+							<!--<a href="#cooperate">A-PACT</a>-->
+							<p>In order to meet the increasing demand for Pac-Asia clinical trials, Rundo, in collaboration with the other core countries and regions, including Japan, Korea, Taiwan etc. - established the Alliance for Pac-Asia Clinical Trials (A-PACT). After a three-year trial run, A-PACT was officially established in Shanghai in May, 2012. With unified SOPs and Project Management approach, A-PACT has already won the interest of numerous Sponsors, offering high quality, efficient and flexible Regional solutions at reasonable costs.
+							</p>
+							<p>
+							</p>
+							<br/>
+							<br/>
+							<p>Our strengths:</p>
+							<p>- Each individual member of the Alliance is a CRO of influence in Pac-Asia.</p>
+							<p>- Unified SOPs and project management system in place.</p>
+							<p>- High quality, efficient clinical trial services, reasonable prices, Customer satisfied service.</p>
+						</div>
+					</div>
+					<div class="service-section-grid">
+						<div class="icon">
+							<!--<span class="d2 glyphicon glyphicon-pushpin"></span>-->
+							<span><img class="lazy" src="images/crou.png" ></span>
+						</div>
+						<div class="icon-text">
+							<br>
+							<!--<a href="#cooperate">CROU</a>-->
+							<p>
+								China clinical Contract Research Organization Alliance (CROU) is a voluntary organization established by the national CRO company, the establishment of public welfare organizations. CROU was founded in 2008, is one of the main sponsors adidas. The alliance aims to unite and organize the CRO company, to carry out self-discipline; safeguard the legitimate rights and interests of the CRO industry; to strengthen communication and cooperation with government departments, play CRO industry and relevant departments of communication and cooperation of the bridge and link; actively carry out clinical trials in the field of academic exchanges, promote the research and practice of the theory of clinical trials methods; continuing to enhance the professional level of CRO industry, to establish the service system of theory and practice of clinical study of drugs needed. CROU in July 10th this year, successful general, member units from more than 40 domestic CRO, the tiger, and Rudong three Boji Medical Co chairman served as chairman, to take spring national reform and promote industry progress, and resolutely combat data fraud and irregularities, active protection of innovative research and development, and safeguard people's safety and effectiveness of drugs in order to promote the development and progress of the industry and contribute to the healthy development of the pharmaceutical industry Chinese.
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 service-grid">
+
+					<div class="service-section-grid">
+						<div class="icon">
+							<span class="d3 glyphicon glyphicon-comment"></span>
+						</div>
+						<div class="icon-text">
+							<a href="#cooperate" style="font-weight: bolder;">Sino-Japan Communication</a>
+							<p>In June 2006, the first Sino-Japanpharmaceutical Communication meeting was held in Osaka Japan, sponsored and hosted by Rundo. </p>
+							<p>In November 2007, the second Sino-Japan pharmaceutical communication meeting was held in Shanghai</p>
+							<p>In November 2008, the third Sino-Japan pharmaceutical Communication meeting was held in Osaka, Japan.</p>
+							<p>In October 2009, the fourth Sino-Japan pharmaceutical communication meeting was held in Shanghai and Beijing.</p>
+							<p>In October 2010, the fifth Sino-Japan pharmaceutical communication meeting was held in Osaka Japan.</p>
+							<p>In November 2011, the sixth Sino-Japan pharmaceutical Communication meeting was held in Beijing. </p>
+							<p>In November 2013, the seventh Sino-Japan pharmaceutical Communication meeting was held in Osaka Japan.</p>
+						</div>
+					</div>
+					<div class="service-section-grid" style="margin-top: 80px;">
+						<div class="icon">
+							<span class="d4 glyphicon glyphicon-facetime-video"></span>
+						</div>
+						<div class="icon-text">
+							<a href="#cooperate" style="font-weight: bolder;">Media Partners</a>
+							<p>&nbsp;</p>
+							<p>We have a long-term cooperation with the professional medical website Dingxiangyuan</p>
+							<p>
+								<a href="http://www.biomart.cn/specials/rundocro20140319">Rundo enterprise interview：http://www.biomart.cn/specials/rundocro20140319</a>
+							</p>
+							<p>
+								<a href="http://www.jobmd.cn/company/2030361.htm">Rundo HR：http://www.jobmd.cn/company/2030361.htm</a>
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	<!--End Cooperate -->
+	<!-- Join Us <-->
+	<!-- End Join Us-->
+	<!-- testimonials -->
+	<div class="testimonials" id="testimonials">
+		<div class="container">
+			<h3 class="animated infinite bounce">Join Us</h3>
+			<p class="aut">We love medical science and technology, cooperation and win-win situation, we believe we are on the eve of the revolution of science and technology we are on the way to enjoy a startup</p>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12">
+					<div class="testimonial_area wow bounceIn">
+						<ul class="testimon_nav">
+							<li>
+								<div class="testimonial_content">
+									<h4>PM</h4>
+									<p>Job Responsibilities：</p>
+									<p>1、To be responsible for all phases clinical trial project management, and conduct full quality control and schedule management. To supervise on project members work proress and quality.To make sure all trials follow GCP、SOP、 protocol and local laws and regulations.</p>
+									<p>2、According to the contract and clinical trial scheme requirements ,to prepare project management plan and confirm the clinical trial responsibility、monitor team、schedule、budget, constantly review and revise project plan.</p>
+									<p>3、To review and approve on project member's actual efforts and expense base on the contract and project plan, make sure the clinical trial accomplished within the appointed time budget.</p>
+									<p>4、To communicate in time and keep good relationship with sponsers,investigators and subcontractors as primary representative of company and team. To support business department seek new project cooperation and business development , and provide relevant information and support clinical trials.</p>
+									<p>Job Requirements：</p>
+									<p>1、Background in medicine,science and/or other relevant discipline bachelor or above.</p>
+									<p>2、Above 4 years monitoring experience in the pharmaceutical companies or CRO and at least 1 year project management experience.</p>
+									<p>3、Leadership, project management skill and ability of cross functional coordination and cooperation.</p>
+									<div style="position:relative; left:80%; bottom: -50px;">
+										<a href="mailto:hr@rundo-cro.com">
+											Join Us
+										</a>
+									</div>
+									<div class="client_img">
+										<img class="lazy" src="images/1.pic.jpg" width="60px" height="60px" alt="img">
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="testimonial_content">
+									<h4>CRA</h4>
+									<p>Job Responsibilities：</p>
+									<p>1、 To be responsible for survey 、select、provide the relevant information of site and investigator. To provide the relevant information of clinical trial according to the progress.</p>
+									<p>2、 To be fully responsible for contacting inspection management of the site, to make sure all trials follow protocol 、GCP、SOP and local regulation. To conduct clinical trail including initiate,execute ,routine monitoring visit and close the whole trial on time.</p>
+									<p>3、 To complete the monitoring report of site high-quality and timely. To assist the report of AE/SAE and follow-up.</p>
+									<p>4、 To ensure the authenticity, accuracy and integrity of the data by the verification of the original data and the management of the case report form.</p>
+									<p>Job Requirements：</p>
+									<p>1、 Background in medicine,clinical，nursing and/or other relevant discipline college or above.</p>
+									<p>2、 Above 1 year experience of CRA in  the pharmaceutical companies or CRO.</p>
+									<p>3、 English level of CET-4，fluent oral is preferred.</p>
+									<div style="position:relative; left:80%; bottom: -50px;">
+										<a href="mailto:hr@rundo-cro.com">
+											Join Us
+										</a>
+									</div>
+									<div class="client_img">
+										<img class="lazy" src="images/1.pic.jpg" alt="img">
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="testimonial_content">
+									<h4>CRC</h4>
+									<p>Job Responsibilities：</p>
+									<p>1、 To be responsible for the communication of site,including the agencies, IEC, the implementation center of hospital department;To assist investigator for AE & SAE reporting; And to communicate with CRA and sponsor .</p>
+									<p>2、 To Co-visit with CRA, and assist arrange sponsor meetings.</p>
+									<p>3、 To support investigator to arrange the subjects recruitment and interview.</p>
+									<p>4、 Keep clinical trial drug and related documents, CRF completion and query resolution.</p>
+									<p>Job Requirements：</p>
+									<p>1、 Background in medicine,nursing and/or other relevant discipline college or above,appropriate experience in hospital(ex. Nurse,doctor)</p>
+									<p>2、 English level of CET-4.</p>
+									<p>3、 Good analytical and communication skills.</p>
+									<div style="position:relative; left:80%; bottom: -50px;">
+										<a href="mailto:hr@rundo-cro.com">
+											Join Us
+										</a>
+									</div>
+									<div class="client_img">
+										<img class="lazy" src="images/1.pic.jpg" alt="img">
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- //testimonials -->
+	<!-- Contact us-->
+	<div class="testimonials" id="contactus">
+		<div class="container">
+			<h3 class="animated infinite bounce">Contact Us</h3>
+			<div class="row jumbotron">
+				<address>
+						<strong>Headquarters：Rundo International Pharmaceutical Research & Development Co., Ltd.</strong>						
+					</address>
+				<ul>
+					<li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i> Add : 266 Hankou Road, Sail Tower 18F, Huangpu district, Shanghai, China, 200001</li>
+					<li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i> POSTCODE : 200001</li>
+					<li><i class="glyphicon glyphicon-phone" aria-hidden="true"></i> TEL：+86 21 51080001</li>
+					<li><i class="glyphicon glyphicon-print" aria-hidden="true"></i> FAX : +86 21 21080010</li>
+				</ul>
+			</div>
+			<div class="row jumbotron">
+				<address>
+						<strong>Nantong Rundo International Pharmaceutical Research & Development Co., Ltd.</strong>						
+					</address>
+				<ul>
+					<li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i> Add：No.99 North Haoqiao Road, Wuzhou International Square, Nantong, China, 226001</li>
+					<li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i> POSTCODE : 226001</li>
+					<li><i class="glyphicon glyphicon-phone" aria-hidden="true"></i> TEL :+86 513 85288638</li>
+					<li><i class="glyphicon glyphicon-print" aria-hidden="true"></i> FAX : +86 513 85288622</li>
+				</ul>
+			</div>
+			<div class="row jumbotron">
+				<address>
+						<strong>Rundo International Pharmaceutical Research & Development Co., Ltd. Beijing Branch</strong>						
+					</address>
+				<ul>
+					<li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i> Add : Room 1010,10/F, Oriental Plaza, No.1 East Chang’an Avenue,Beijing, China, 100738</li>
+					<li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i> POSTCODE : 100738</li>
+					<li><i class="glyphicon glyphicon-phone" aria-hidden="true"></i> TEL：+86 10 85189860</li>
+					<li><i class="glyphicon glyphicon-print" aria-hidden="true"></i> FAX : +86 10 66008035</li>
+				</ul>
+			</div>
+			<div class="row jumbotron">
+				<address>
+						<strong>Rundo International Pharmaceutical Research & Development Co., Ltd. Guangzhou Representative Office</strong>						
+					</address>
+				<ul>
+					<li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i> Add : No. 298 Middle Yanjiang Road, Jiangwan business center central area 4010,Yuexiu district,Guangdong,P.R.China</li>
+					<li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i> POSTCODE : 510110</li>
+					<li><i class="glyphicon glyphicon-phone" aria-hidden="true"></i> TEL：+86 20 83806080</li>
+					<li><i class="glyphicon glyphicon-print" aria-hidden="true"></i> FAX : +86 20 83806080</li>
+				</ul>
+			</div>
+			<div class="row jumbotron">
+				<address>
+						<strong>SMO Subsidiary</strong>						
+					</address>
+				<ul>
+					<li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i> Add : 266 Hankou Road, Sail Tower 10F, Huangpu district, Shanghai, China, 200001</li>
+					<li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i> POSTCODE : 200001</li>
+					<li><i class="glyphicon glyphicon-phone" aria-hidden="true"></i> TEL：+86 21 51080008</li>
+					<li><i class="glyphicon glyphicon-print" aria-hidden="true"></i> FAX : +86 21 51080020</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- End Contact us-->
+	<!-- footer -->
+	<div class="footer">
+		<div class="container">
+			<div>
+				<div class="footer-bottom-at">
+					<div class="col-md-6 footer-grid">
+						<a href="index.html"><img src="images/1.pic.jpg" width="60px" height="60px" alt="rundo"></a>Rundo International Pharmaceutical Research & Development Co.,LTD
+					</div>
+
+				</div>
+				<div class="clearfix"> </div>
+				<div class="col-md-12">
+					<ul class="footer-nav">
+						<li class="scroll">
+							<a href="index.html">Home</a>
+						</li>
+						<li>
+							<a href="#welcome">About Us</a>
+						</li>
+						<li>
+							<a href="#services" class="scroll">Scope of Service</a>
+						</li>
+						<li>
+							<a href="#news" class="scroll">News</a>
+						</li>
+						<li>
+							<a href="#cooperate">Cooperation</a>
+						</li>
+						<li>
+							<a href="#testimonials">Join Us</a>
+						</li>
+						<li>
+							<a href="contact.html">Contact Us</a>
+						</li>
+					</ul>
+				</div>
+				<div class="clearfix"> </div>
+				<div class="footaddress">
+					<p>Address: Hankou Road, Huangpu District, Shanghai, China Shanghai Tower, 18th Floor, No. 266 Zip: 200001 TEL :021-51080001 FAX :021-51080020</p>
+				</div>
+				<div>
+					<p class="footer-class">Copyright © Rundo International Pharmaceutical Research & Development Co., Ltd. 沪ICP备12019127号</p>
+				</div>
+			</div>
+		</div>
+		<!-- //footer -->
+
+		<!-- here stars scrolling icon -->
+		<!--<script src="js/owl.carousel.min.js"></script>-->
+		<script type="text/javascript">
+			$(document).ready(function() {
+				/*
+					var defaults = {
+					containerID: 'toTop', // fading element id
+					containerHoverID: 'toTopHover', // fading element hover id
+					scrollSpeed: 1200,
+					easingType: 'linear' 
+					};
+				*/
+				$().UItoTop({
+					easingType: 'easeOutQuart'
+				});
+			});
+		</script>
+		<!-- //here ends scrolling icon -->
+</body>
+
+</html>
