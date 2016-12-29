@@ -821,6 +821,7 @@ a.news-post {
 .news-section-grid {
 	padding: 0 10px;
 	position: relative;
+	height: 450px;
 }
 
 .news-section-grid p {
