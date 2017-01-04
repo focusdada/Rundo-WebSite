@@ -75,7 +75,7 @@
         function getNewsSection() {
             $.ajax({
                 type: "post",
-                url: apihost + "Service/GetNewsList?ispop=0&index=1&size=6&lang=EN",
+                url: apihost + "Service/GetNewsList?ispop=1&index=1&size=6&lang=EN",
                 async: true,
                 dataType: "jsonp",
                 jsonp: "callback",
@@ -192,7 +192,6 @@
             <!-- //script for menu -->
         </div>
 
-        <!---------------------------------------------->
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
             <ol class="carousel-indicators">
@@ -220,9 +219,9 @@
                     </div>
                 </div>
                 <div class="item">
-                    <img class="lazy" src="images/rundo_slider_6_1_dark.png">
+                    <img class="lazy" src="images/Sliderbild3_dark.jpg">
                     <div class="slider_caption" style="height: 200%;top: 0%;">
-                        <h2 style="margin-top: 25%;font-size: 30px;">News：Chinese medicine entrepreneurs convention</h2>
+                        <h2 style="margin-top: 25%;font-size: 30px;">News</h2>
                         <a class="slider_btn" href="newslistEN.html?p=1">Read More</a>
                     </div>
                 </div>

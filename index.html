@@ -129,7 +129,6 @@
             </script>
             <!-- //script for menu -->
         </div>
-        <!---------------------------------------------->
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
             <ol class="carousel-indicators">
@@ -156,7 +155,7 @@
                     </div>
                 </div>
                 <div class="item">
-                    <img class="lazy" src="images/Sliderbild3.jpg">
+                    <img class="lazy" src="images/Sliderbild3_dark.jpg">
                     <div class="slider_caption" style="height: 200%;top: 0%;">
                         <h2 style="margin-top: 25%;">最新资讯</h2>
                         <a class="slider_btn" href="newslist.html?p=1">了解更多</a>
@@ -866,7 +865,7 @@
             function getNewsSection() {
                 $.ajax({
                     type: "post",
-                    url: apihost + "Service/GetNewsList?ispop=0&index=1&size=6&lang=CH",
+                    url: apihost + "Service/GetNewsList?ispop=1&index=1&size=6&lang=CH",
                     async: true,
                     dataType: "jsonp",
                     jsonp: "callback",
